@@ -2,7 +2,7 @@ import { createRouter } from "./context";
 import { z } from "zod";
 
 export const positionRouter = createRouter()
-  .query("createPosition", {
+  .query("create", {
     input: z
       .object({
         text: z.string().nullish(),

@@ -18,6 +18,34 @@ model User {
   name    String?
 }
 
+
+model Currency {
+  id Int @id @default(autoincrement())
+  code String @unique
+}
+model Status {
+  id Int @id @default(autoincrement())
+  code String @unique
+}
+model Type {
+  id Int @id @default(autoincrement())
+  code String @unique
+}
+model Side {
+  id Int @id @default(autoincrement())
+  code String @unique
+}
+model Exchange {
+  id Int @id @default(autoincrement())
+  code String @unique
+}
+
+model Symbol {
+  id Int @id @default(autoincrement())
+  quote String 
+  base String
+}
+
 model Trade {
   id String @id 
   exchange String
