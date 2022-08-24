@@ -1,0 +1,151 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  name    String?
+}
+
+model Trade {
+  id String @id 
+  exchange String
+  symbol String
+  price Decimal
+  amount Decimal
+  side String
+  type String
+  timestamp Int
+}
+
+model Ticket {
+  id String @id
+  exchange String
+  symbol String
+  bid Decimal
+  ask Decimal
+  timestamp Int
+}
+
+model Liquidation {
+  exchange String
+  symbol String
+  side String
+  quantity Decimal
+  price Decimal
+  id String @id
+  status String
+  timestamp Int
+}
+
+model Funding {
+  id String @id
+  exchange String
+  symbol String
+  markPrice Decimal
+  rate Decimal
+  nextFundingRate Decimal
+  predictedRate Decimal
+  timestamp Int
+}
+
+model OrderBook {
+  id String @id
+  exchange String
+  symbol String
+  book String
+  sequenceNumber Decimal
+  checkSum Decimal
+  timestamp Int
+}
+
+model Order {
+  id String @id
+  symbol String
+  exchange String
+  clientOrderId String
+  side String
+  type String
+  price Decimal
+  amount Decimal
+  account String
+  timestamp Int
+}
+
+model OpenInterest {
+  id String @id
+  symbol String
+  exchange String
+  openInterest Decimal
+  timestamp Int
+}
+
+model OrderInfo {
+  id String @id
+  symbol String
+  exchange String
+  clientOrderId String
+  side String
+  status String
+  type String
+  price Decimal
+  amount Decimal
+  remainig Decimal
+  account String
+  timestamp Int
+}
+
+model Balance {
+  id String @id
+  exchange String
+  currency String
+  balance Decimal
+  reserved Decimal
+}
+
+model Transaction {
+  id String @id
+  exchange String
+  currency String
+  type String
+  status String
+  amount Decimal
+  timestamp Int
+}
+
+model Fill {
+  id String @id
+  exchange String
+  symbol String
+  price Decimal
+  amount Decimal
+  side String
+  fee Decimal
+  orderId String
+  liquidity String
+  type String
+  account String
+  timestamp Int
+}
+
+model Position {
+  id String @id
+  exchange String
+  symbol String
+  position Decimal
+  entryPrice Decimal
+  side Decimal
+  unrealizedPnl Decimal
+  timestamp Int
+}
